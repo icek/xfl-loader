@@ -7,6 +7,8 @@ function XFLLoader(content) {
   if (content !== 'PROXY-CS5') throw 'Incorrect XFL file';
 
   const callback = this.async();
+  let options = loaderUtils.getOptions(this);
+  options = Object.assign({ publishProfile: 'JavaScript/HTML' }, options);
 
   const xflDir = path.dirname(loaderUtils.getRemainingRequest(this));
   const domDocumentPath = path.resolve(xflDir, 'DomDocument.xml');
@@ -21,7 +23,7 @@ function XFLLoader(content) {
     fs.readFile(publishSettingsPath, (err, data) => {
       if (err) throw err;
       const publishSettingsXML = new XmlDocument(data);
-      const profile = publishSettingsXML.childNamed('profile').childWithAttribute('name', 'JavaScript/HTML');
+      const profile = publishSettingsXML.childNamed('profile').childWithAttribute('name', options.publishProfile);
       if (!profile) throw 'Please save & publish Adobe Animate project first';
       const publishPath = profile.childWithAttribute('name', 'filename').val;
       if (!profile) throw 'Please save & publish Adobe Animate project first';
