@@ -8,7 +8,6 @@ function XFLLoader(content) {
 
   const callback = this.async();
   const options = loaderUtils.getOptions(this);
-  console.log(options);
 
   const xflDir = path.dirname(loaderUtils.getRemainingRequest(this));
   const domDocumentPath = path.resolve(xflDir, 'DomDocument.xml');
