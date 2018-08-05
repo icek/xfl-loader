@@ -36,6 +36,7 @@ function XFLLoader(content) {
         arr.pop();
         content = `let createjs = require('createjs');
 let AdobeAn;
+const playSound = (id, loop) => createjs.Sound.play(id, {interrupt: createjs.Sound.INTERRUPT_EARLY, loop});
           
 ${arr.join('\n')}
           
