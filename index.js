@@ -7,7 +7,6 @@ function XFLLoader(content) {
   if (content !== 'PROXY-CS5') throw 'Incorrect XFL file';
 
   const callback = this.async();
-  const options = loaderUtils.getOptions(this);
 
   const xflDir = path.dirname(loaderUtils.getRemainingRequest(this));
   const domDocumentPath = path.resolve(xflDir, 'DomDocument.xml');
