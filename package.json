@@ -1,0 +1,27 @@
+{
+  "name": "xfl-loader",
+  "version": "0.0.1",
+  "description": "Webpack loader for Adobe Animate canvas files",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icek/xfl-loader.git"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "adobe",
+    "animate",
+    "xfl"
+  ],
+  "author": "Grzegorz Michlicki <grzegorz@michlicki.pl>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/icek/xfl-loader/issues"
+  },
+  "homepage": "https://github.com/icek/xfl-loader#readme",
+  "dependencies": {
+    "loader-utils": "^1.1.0",
+    "xmldoc": "^1.1.2"
+  }
+}
