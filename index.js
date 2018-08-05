@@ -26,13 +26,15 @@ function XFLLoader(content) {
       const publishPath = profile.childWithAttribute('name', 'filename').val;
       if (!profile) throw 'Please save & publish Adobe Animate project first';
       const filePath = path.resolve(xflDir, '..', publishPath);
+      const fileDir = path.dirname(filePath);
       this.dependency(filePath);
 
       fs.readFile(filePath, (err, data) => {
-        const arr = data.toString().split('\n');
+        let content = data.toString().replace(/({src:)"(.*)"(, id:".*"},?)/g, `$1require("${fileDir}/$2")$3`);
+        const arr = content.toString().split('\n');
         // remove last line: var createjs, AdobeAn;
         arr.pop();
-        const content = `let createjs = require('createjs');
+        content = `let createjs = require('createjs');
 let AdobeAn;
           
 ${arr.join('\n')}
